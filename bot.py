@@ -27,16 +27,27 @@ class LoginPage:
         sign_in_button = self.driver.find_element(By.LINK_TEXT, 'Sign in')
         sign_in_button.click()
         self.driver.implicitly_wait(5)
+
         username = self.driver.find_element(By.NAME, "text")
         username.clear()
         username.send_keys(os.environ['username'])
+        
         next_button = self.driver.find_element(By.XPATH, "//*[@id='layers']/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/button[2]")
         next_button.click()
-        email = self.driver.find_element(By.XPATH, "//*[@id='layers']/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div[2]")
+        
+        email = self.driver.find_element(By.XPATH, "//*[@id='layers']/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div[2]/label/div/div[2]/div/input")
         email.clear()
         email.send_keys(os.environ['email'])
+        self.driver.implicitly_wait(1)
+        
         email_next_button = self.driver.find_element(By.XPATH, "//*[@id='layers']/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[2]/div/div/div/button")
         email_next_button.click()
-        password = self.driver.find_element(By.XPATH, "//*[@id='layers']/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div/div[3]/div")
+        
+        password = self.driver.find_element(By.XPATH, "//*[@id='layers']/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div/div[3]/div/label/div/div[2]/div[1]/input")
         password.clear()
         password.send_keys(os.environ['password'])
+        self.driver.implicitly_wait(1)
+        
+        log_in_button = self.driver.find_element(By.XPATH, "//*[@id='layers']/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[1]/div/div/button")
+        log_in_button.click()
+        sleep(10)
