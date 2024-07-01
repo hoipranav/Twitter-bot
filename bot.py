@@ -2,14 +2,14 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from time import sleep
-import os
 from dotenv import load_dotenv
+import os
 
-load_dotenv()
+load_dotenv(dotenv_path=".env")
 
 def sign_in(driver):
     '''Locates Sign in button & clicks it'''
-    sign_in_button = driver.find_element(By.LINK_TEXT, 'Sign in')
+    sign_in_button = driver.find_element(By.XPATH, '//*[@id="react-root"]/div/div/div[2]/main/div/div/div[1]/div[1]/div/div[3]/div[4]/a')
     return sign_in_button
 
 def put_username(driver):
@@ -68,6 +68,8 @@ class LoginPage:
 
     def login(self):
         '''Log's in into the User's Twitter Account'''
+        x_button = self.driver.find_element(By.XPATH, '//*[@id="layers"]/div/div[1]/div/div/div/button')
+        x_button.click()
         sign_in(self.driver).click()
         self.driver.implicitly_wait(3)
         put_username(self.driver).click()
